@@ -13,15 +13,34 @@
     <header>
         <h1>Awesome Startup Employee Directory</h1>
     </header>
+    <!-- main grid contains all the information about all the employees -->
     <main class="grid-container">
         <div class="card">
-          <img class="picture" src="member-1.jpg">
+          <img class="avatar" src="member-1.">
           <div class="text-container">
                 <h2 class="name">Ramandeep</h2>
                 <p class="email">ramandeepformay@gmail.com</p>
                 <p class="city">Mississauga</p>
           </div>
     </main>
-    <script src="indes.js"></script>
+    <div class= "overlay hidden">
+        <!-- overlay grid -->
+        <div class= "modal">
+            <button class= "modal-close"> X </button>
+            <div class= "modal-content">
+                <img class= "avatar" src= "member-1" />
+                <div class= "text-container" >
+                    <h2 class= "name" > Haleigh Macchiarella </h2>
+                    <p class= "email" > dtucker@yakitri.edu </p>
+                    <p class= "address" > Chicago </p>
+                    <p> (593) 364-3249 </p>
+                    <p class= "address"> 123 Anywhere St, WV 84814 </p>
+                    <p> Birthday: 01/04/85 </p>
+                </div>
+            </div>
+        </div>
+    </div>   
+
+    <script src="index.js"></script>
 </body>
 </html>

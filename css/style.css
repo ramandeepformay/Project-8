@@ -1,8 +1,10 @@
 body {
-   
     font-family: 'Raleway', sans-serif;
     background:whitesmoke;
     margin:30px;
+    width:80%;
+    margin:auto;
+    position: relative;
 }
 header h1{
     margin-top:40px;
@@ -11,9 +13,80 @@ header h1{
     letter-spacing: 1px;
 }
 .card{
+    
     border:2px solid gainsboro;
-    margin:10px;
+    border-radius:10px;
+    margin:20px;
     display:flex;
-    flex-direction:row;
+    flex-flow:column wrap ;
     justify-content:flex-start;
+    align-items: center;
+    padding:10px;
+background:white;
+}
+
+.text-container >*{
+    margin: 8px;
+   
+}
+.avatar{
+    display:block;
+    max-width:100%;
+    border:1px solid transparent;
+    border-radius:50%;
+    margin:0px 20px;
+  
+}
+.name{
+    text-transform: capitalize;
+    font-weight:bolder;
+    font-size:2rem;
+}
+.email, .address{
+    font-size: 1.4rem;
+    color:gray;
+    
+}
+@media(min-width:580px){
+   .grid-container{
+       display: flex;
+       flex-flow:row wrap;
+       justify-content:space-around;
+       align-items: flex-start;
+   }
+    .card{
+        flex-flow:row wrap;
+        justify-content: flex-start;
+        align-items: center;
+        flex:1 0 calc(100% - 70%);
+
+    }
+    
+}
+.overlay {
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:rgba(100, 100, 100, 0.4)
+}
+.modal {
+    width:300px ;
+    margin:30%  auto;
+    position: relative;
+    text-align: center;
+    background: #fff ;
+    border: 1px solid #778 ;
+    border-radius: 5px ;
+    padding: 30px 20px ;
+}
+.modal-close {
+    position:absolute;
+    right:15px ;
+    top:5px ;
+    cursor:pointer;
+}
+.hidden{
+    display: none;
 }
