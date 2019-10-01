@@ -7,6 +7,7 @@ const button = document.querySelector(".modal-close");
 const urLink =`https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob &noinfo &nat=US`;
 const input= document.querySelector("#inp");
+let index;
 //fetching data function
 async function fetchUrl(url){
     try{
@@ -58,7 +59,7 @@ gridContainer.addEventListener("click", e=>{
         //applying closest method to make sure it returns the closest element
         const card=e.target.closest(".card");
         //extracting data-index
-        const index =card.getAttribute("data-index");
+        index =card.getAttribute("data-index");
         //calling display function
         display(index);
     }
@@ -76,7 +77,10 @@ function display(ind){
     let addrees =`${employees[ind].location.street.number} ${employees[ind].location.street.name}, ${data} ${employees[ind].location.postcode}`
     
     let modalHtml = `  
+    <div class="modal-card" data-ind=${ind}>
     <img class= "avatar" src= "${image}"/>
+    <a href="#" class="previous">&laquo;</a>
+    <a href="#" class="next">f0da</a>
     <div class= "text-container" >
         <h2 class= "name" > ${name} </h2>
         <p class= "email" > ${email}</p>
@@ -84,6 +88,8 @@ function display(ind){
         <p>${telephone} </p>
         <p class= "address"> ${addrees}</p>
         <p>Birthday: ${birthday.getMonth()}/${birthday.getDate()}/${birthday.getFullYear()} </p>
+        </div>
+      
     </div>`
     
     modalContent.innerHTML=modalHtml;
@@ -118,6 +124,39 @@ function search(){
         }
     }
 }
- 
-input.addEventListener("keyup",search)
+input.addEventListener("keyup",search);
 
+//to and fro functionality
+
+modalContent.addEventListener("click",(event)=>{
+    if(event.target.className==="previous"){
+        console.log("yes");
+        previous();
+    }
+    if(event.target.className==="next"){
+        console.log("no");
+        next();
+    }
+
+});
+function getIndex(){
+    display(index);
+}
+function next(){
+    if(index===employees.length-1){
+        return false;
+    }
+    else{
+        index++;
+        getIndex()
+    }
+}
+function previous(){
+    if(index===0){
+        return false;
+    }
+    else{
+        index--;
+        getIndex();
+    }
+}
