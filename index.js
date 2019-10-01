@@ -6,15 +6,14 @@ const overlay = document.querySelector(".overlay");
 const button = document.querySelector(".modal-close");
 const urLink =`https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob &noinfo &nat=US`;
-
+const input= document.querySelector("#inp");
 //fetching data function
 async function fetchUrl(url){
     try{
         const data = await fetch(url);
         const result = await data.json();
         console.log(result);
-        return result;
-        
+        return result;   
     }
     catch(error){
         console.log(error);
@@ -24,17 +23,17 @@ async function fetchUrl(url){
 fetchUrl(urLink)
 //sending the data to employeesInfo function 
 .then(data=>employeesInfo(data.results));
-
+let name, email,city,picture,ind;
 async function employeesInfo(data){
     //storing all the data in an array
     employees=  await data;
     //callling map on employyes to extract tne information
     employees.forEach(async(emp, index)=>{
-        let name = emp.name;
-        let email = emp.email;
-        let city =  emp.location.city;
-        let picture=  emp.picture;
-        let ind = index;
+         name = emp.name;
+         email = emp.email;
+         city =  emp.location.city;
+         picture=  emp.picture;
+         ind = index;
 //callling innerHtml function with new extracted data
         innerHtml(name, email, city, picture, ind);
     })
@@ -74,10 +73,10 @@ function display(ind){
     let telephone=employees[ind].phone;
     let image =employees[ind].picture.large;
     let birthday = new Date(employees[ind].dob.date);
-    let addrees =`${employees[ind].location.street}, ${data} ${employees[ind].location.postcode}`
+    let addrees =`${employees[ind].location.street.number} ${employees[ind].location.street.name}, ${data} ${employees[ind].location.postcode}`
     
     let modalHtml = `  
-    <img class= "avatar" src= "${image}" />
+    <img class= "avatar" src= "${image}"/>
     <div class= "text-container" >
         <h2 class= "name" > ${name} </h2>
         <p class= "email" > ${email}</p>
@@ -103,3 +102,22 @@ button.addEventListener("click",(e)=>{
         overlay.classList.add("hidden");
     }
 })
+
+// search functionality
+function search(){
+    const val = input.value.toUpperCase();
+    const nameCard=gridContainer.querySelectorAll(".card");
+    var h2, textVal;
+    for(var i=0; i<nameCard.length; i++){
+        h2=nameCard[i].getElementsByTagName("h2")[0];
+        textVal = h2.textContent;
+        if (textVal.toUpperCase().indexOf(val)=== 0) {
+            nameCard[i].style.display = "";
+        } else {
+            nameCard[i].style.display = "none";
+        }
+    }
+}
+ 
+input.addEventListener("keyup",search)
+

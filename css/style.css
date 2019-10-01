@@ -6,36 +6,56 @@ body {
     margin:auto;
     position: relative;
 }
+header {
+    padding:1px;
+    margin:40px 0px; 
+}
+header input{
+    display:block;
+    float:right;
+}
+input[type="text"]{
+    font-size:1.4rem;
+    outline:none;
+    width:200px;
+    padding:2px 10px;
+    min-height:auto;
+    border:1px solid black;
+}
+
 header h1{
-    margin-top:40px;
+    margin:0;
     font-size:1.4rem;
     text-transform:uppercase;
     letter-spacing: 1px;
+    float:left;
 }
 .card{
-    
+    display:block;
+    width:95%;
     border:2px solid gainsboro;
     border-radius:10px;
     margin:20px;
-    display:flex;
-    flex-flow:column wrap ;
-    justify-content:flex-start;
-    align-items: center;
     padding:10px;
-background:white;
+    display:flex;
+    flex-flow:row wrap;
+    align-items:center;
+    justify-content: center;
+    margin: 10px auto;
+    text-align: center;
 }
-
+.text-container{
+    margin-left: 10px;
+}
 .text-container >*{
-    margin: 8px;
-   
+ margin: 4px 0px;
+ 
 }
 .avatar{
     display:block;
     max-width:100%;
     border:1px solid transparent;
     border-radius:50%;
-    margin:0px 20px;
-  
 }
 .name{
     text-transform: capitalize;
@@ -47,20 +67,24 @@ background:white;
     color:gray;
     
 }
-@media(min-width:580px){
-   .grid-container{
+@media(min-width:600px){
+    .grid-container{
        display: flex;
        flex-flow:row wrap;
        justify-content:space-around;
-       align-items: flex-start;
+       align-items: center;
+       
    }
     .card{
-        flex-flow:row wrap;
-        justify-content: flex-start;
+        display: flex;
+        flex-flow:row  wrap;
+        justify-content: space-around;
         align-items: center;
-        flex:1 0 calc(100% - 70%);
-
-    }
+        flex:1 0 250px;
+        
+    } 
+    
+    
     
 }
 .overlay {
@@ -88,7 +112,7 @@ background:white;
     top:5px ;
     cursor:pointer;
 }
-.hidden{
+.hidden,.hide{
     display: none;
 }
 .modal-content{
